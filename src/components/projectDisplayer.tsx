@@ -17,7 +17,7 @@ export default function ProjectDisplayer() {
           Blockchain & Backend
         </NavLink>
         <NavLink
-          to="/reactapps"
+          to="/reactapp"
           className={({ isActive }) =>
             isActive
               ? "border-b-2 border-cyan-400 pb-1 text-cyan-400"

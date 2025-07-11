@@ -3,10 +3,9 @@
 @tailwind utilities;
 
 body {
+  @apply text-white overflow-x-hidden;
   background: radial-gradient(circle at 20% 30%, #1a1a2e 0%, #0f0f1b 100%);
-  font-family: "Orbitron", sans-serif;
-  color: whitesmoke;
-  overflow-x: hidden;
+  font-family: "grotesk", sans-serif;
 }
 
 @keyframes pulse-glow {
