@@ -5,12 +5,13 @@ export default async function handler(
   res: VercelResponse
 ) {
   const { token } = req.body;
-
+  console.log(`Received token: ${token}`);
+  
   if (!token) {
     return res.status(400).json({ success: false, message: 'No token provided' });
   }
 
-  const secret = process.env.RECAPTCHA_SECRET_KEY!;
+  const secret = process.env.VITE_RECAPTCHA_SECRET_KEY!;
   const verifyURL = `https://www.google.com/recaptcha/api/siteverify`;
 
   const formData = new URLSearchParams();
