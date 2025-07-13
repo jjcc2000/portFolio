@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <GoogleReCaptchaProvider
-        reCaptchaKey={`${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`}
+        reCaptchaKey={`${import.meta.env.RECAPTCHA_SITE_KEY}`}
       >
         <Info />
         <Links />
