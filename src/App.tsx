@@ -10,20 +10,18 @@ import ContactForm from "./components/ContactForm";
 
 function App() {
   return (
-    <>
-      <GoogleReCaptchaProvider
-        reCaptchaKey={`${import.meta.env.RECAPTCHA_SITE_KEY}`}
-      >
-        <Info />
-        <Links />
-        <ProjectDisplayer />
-        <ContactForm />
+    <GoogleReCaptchaProvider
+      reCaptchaKey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+    >
+      <Info />
+      <Links />
+      <ProjectDisplayer />
+      <ContactForm />
 
-        <Routes>
-          <Route path="/:projectRepo" element={<Projects />} />
-        </Routes>
-      </GoogleReCaptchaProvider>
-    </>
+      <Routes>
+        <Route path="/:projectRepo" element={<Projects />} />
+      </Routes>
+    </GoogleReCaptchaProvider>
   );
 }
 
