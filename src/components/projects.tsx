@@ -166,7 +166,7 @@ export default function Projects() {
     <div className="w-full overflow-x-auto px-4 py-6 lg:pl-24">
       <div className="mx-auto max-w-7xl">
         <div className="mx-auto flex w-max justify-center gap-4">
-          {projectRepo ? (
+          {projectRepo?.length ? (
             repos.map((ele: GitHubRepo) => (
               <div
                 key={ele.id}
@@ -194,9 +194,7 @@ export default function Projects() {
               </div>
             ))
           ) : (
-            <h1 className="text-center text-white">
-              No topic provided in URL.
-            </h1>
+            <h1 className="text-yellow text-center">Error on the fecth.</h1>
           )}
         </div>
       </div>

@@ -1,27 +1,21 @@
-import { GoogleReCaptchaProvider } from "react-google-recaptcha-v3";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import "./index.css";
-import Info from "./components/info";
-import Links from "./components/links";
-import ProjectDisplayer from "./components/projectDisplayer";
-import Projects from "./components/projects";
-import { Route, Routes } from "react-router-dom";
-import ContactForm from "./components/ContactForm";
+import ValidProjectsRoute from "./validators/ValidProjectsRoute";
+import NotFound from "./components/NotFound";
+import AppLayout from "./components/AppLayout";
 
 function App() {
   return (
-    <GoogleReCaptchaProvider
-      reCaptchaKey={`${import.meta.env.VITE_RECAPTCHA_SITE_KEY}`}
-    >
-      <Info />
-      <Links />
-      <ProjectDisplayer />
-      <ContactForm />
-
+    <>
       <Routes>
-        <Route path="/:projectRepo" element={<Projects />} />
+        <Route element={<AppLayout />}>
+          <Route index element={<Navigate replace to="blockchainbackend" />} />
+          <Route path=":projectRepo" element={<ValidProjectsRoute />} />
+        </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
-    </GoogleReCaptchaProvider>
+    </>
   );
 }
 
