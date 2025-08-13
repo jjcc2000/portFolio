@@ -22,7 +22,6 @@ interface GitHubRepo {
 
 export default function Projects() {
   const { projectRepo } = useParams();
-  console.log(projectRepo);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
 
   //? //! GRAPHQL API BASE REQUEST
@@ -143,7 +142,6 @@ export default function Projects() {
             }
           }),
         );
-        console.log(enrichedRepos);
 
         // Step 3: Filter based on projectRepo
         const filteredRepos = enrichedRepos.filter((repo) =>
@@ -152,14 +150,12 @@ export default function Projects() {
           ),
         );
         setRepos(filteredRepos);
-        console.log(repos);
       } catch (err) {
         console.error("❌ Error fetching repos via REST", err);
       }
     };
 
     fetchReposWithTopics();
-    console.log(repos);
   }, [projectRepo]);
 
   return (
