@@ -6,7 +6,7 @@ interface GitHubRepo {
   id: number;
   name: string;
   full_name: string;
-  url: string;
+  html_url: string;
   description: string | null;
   language: string | null;
   topics: string[];
@@ -149,6 +149,8 @@ export default function Projects() {
             (t: string) => t.toLowerCase() === projectRepo.toLowerCase(),
           ),
         );
+        console.log(filteredRepos);
+
         setRepos(filteredRepos);
       } catch (err) {
         console.error("❌ Error fetching repos via REST", err);
@@ -180,7 +182,7 @@ export default function Projects() {
                 </p>
 
                 <a
-                  href={ele.url}
+                  href={ele.html_url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-blue-400 underline"
