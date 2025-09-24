@@ -161,39 +161,47 @@ export default function Projects() {
   }, [projectRepo]);
 
   return (
-    <div className="w-full overflow-x-auto px-4 py-6 lg:pl-24">
+    <div className="w-full px-4 py-6 lg:pl-24">
       <div className="mx-auto max-w-7xl">
-        <div className="mx-auto flex w-max justify-center gap-4">
-          {projectRepo?.length ? (
-            repos.map((ele: GitHubRepo) => (
-              <div
-                key={ele.id}
-                className="min-w-[90vw] max-w-[22vw] flex-shrink-0 rounded-lg border border-white/10 bg-white/5 p-4 text-white shadow-md sm:min-w-[45vw] lg:min-w-[22vw]"
-              >
-                <h3 className="mb-1 text-xl text-cyan-300">{ele.name}</h3>
-
-                {/* Description goes here */}
-                <p className="mb-2 text-sm text-gray-300">
-                  {ele.description || "No description available."}
-                </p>
-
-                <p className="mb-1 text-sm text-gray-400">
-                  {ele.language || "No language"}
-                </p>
-
-                <a
-                  href={ele.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 underline"
+        {/* Make the list area scroll down */}
+        <div className="max-h-[80vh] overflow-y-auto">
+          {/* 1/2/3-column responsive grid */}
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {projectRepo?.length ? (
+              repos.map((ele: GitHubRepo) => (
+                <div
+                  key={ele.id}
+                  className="flex flex-col rounded-lg border border-white/10 bg-white/5 p-4 text-white shadow-md"
                 >
-                  View on GitHub
-                </a>
-              </div>
-            ))
-          ) : (
-            <h1 className="text-yellow text-center">Error on the fecth.</h1>
-          )}
+                  <h3 className="mb-1 break-words text-xl text-cyan-300">
+                    {ele.name}
+                  </h3>
+
+                  <p className="mb-2 break-words text-sm text-gray-300">
+                    {ele.description || "No description available."}
+                  </p>
+
+                  <p className="mb-3 text-sm text-gray-400">
+                    {ele.language || "No language"}
+                  </p>
+
+                  {/* Push link to bottom if you like equal card heights */}
+                  <div className="mt-auto">
+                    <a
+                      href={ele.html_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-400 underline"
+                    >
+                      View on GitHub
+                    </a>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <h1 className="text-yellow text-center">Error on the fetch.</h1>
+            )}
+          </div>
         </div>
       </div>
     </div>
