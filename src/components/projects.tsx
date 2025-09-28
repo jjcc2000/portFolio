@@ -149,8 +149,6 @@ export default function Projects() {
             (t: string) => t.toLowerCase() === projectRepo.toLowerCase(),
           ),
         );
-        console.log(filteredRepos);
-
         setRepos(filteredRepos);
       } catch (err) {
         console.error("❌ Error fetching repos via REST", err);
